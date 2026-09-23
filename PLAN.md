@@ -101,3 +101,9 @@ to the next.
 ## Improvement history
 
 <!-- Entries are added by /improve — don't delete this section -->
+
+### 2026-09-23 — Audit (health check only)
+- **Findings:** 0 critical, 4 important, 4 nice-to-have
+- **Top concerns:** The Excel upload path parses user files with SheetJS `xlsx` 0.18.5 (npm), which has known prototype-pollution (CVE-2023-30533) and ReDoS (CVE-2024-22363) advisories; the fixed builds ship only from the SheetJS CDN, not npm. The advertised audit CLI has no working entrypoint: `python -m src.cli.audit` exits silently (no `__main__` guard), the `item-preflight` console script is not installed (no build-system config, top-level package named `src`), and the README never shows a CLI command. HANDOFF.md stops at 2026-06-23 while 32 commits landed on origin/main since (client-mode conversion, golden/drift CI gates, OG meta, gitleaks hook), and README/CLAUDE.md still say "Pydantic v2" although the engine moved to stdlib dataclasses on 2026-06-20 and `pydantic` is still a declared runtime dependency. Nice-to-have: 67 Ruff errors (58 line-length, 4 E402, 4 import-sort, 1 unused import); client-mode.yml comments say v0.2.1 but pin v0.2.2; `superfly/flyctl-actions/setup-flyctl@master` is unpinned; nginx.conf sets no security headers (CSP, X-Content-Type-Options). Healthy: 127/127 pytest pass, canonical drift gate clean, all four CI workflows green on the last origin/main push, .gitignore covers secrets and engagement data, no DOM-injection sinks in the frontend. Manual security/code-quality/data pass replaced the automated reviews.
+- **Action taken:** Audit only — no fixes this session
+- **Next review:** 2026-12-22
