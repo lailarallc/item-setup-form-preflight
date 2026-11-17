@@ -1,0 +1,21 @@
+# Typed figures this repo prints with no canon key (owner, 2026-11-15; plan U19, U22).
+# One row per figure per location. The platform's fleet check holds the row count to a ceiling that only
+# falls: give a figure a key (or stop printing it) and delete its row. listed=yes: the read map names it, and
+# U19 owes its key; listed=no: U22 works it down. Generated from the 2026-11-15 manifest pass.
+file_line	printed	exact_value	meaning	source	kind	listed
+case-study/index.html:239	(10)	10	SKUs per product line (5 lines x 10)	data/cinderhaven/product_master.csv product_line column	repo-export	no
+case-study/index.html:250	29	29	SKUs that would bounce at Walmart (of 50)	scripts/results/walmart.json (FAIL verdicts); tests_golden.py:62 asserts (21, 29)	repo-export	yes
+case-study/index.html:282	10 channels	10	channels Cinderhaven ships through	prose only	prose-only	no
+case-study/index.html:314	18 of 50 / 36%	18	SKUs missing case dimensions	data/cinderhaven/product_master.csv blanks in case_length/width/height_in	repo-export	yes
+case-study/index.html:344	8 of 50 / 16%	8	SKUs with invalid GTIN-14 check digit	data/cinderhaven/product_master.csv col gtin14	repo-export	yes
+case-study/index.html:354	2 of 50 / 4%	2	SKUs missing case gross weight	data/cinderhaven/product_master.csv col case_weight_lbs	repo-export	yes
+case-study/index.html:364	2 of 50 / 4%	2	SKUs missing country of origin	data/cinderhaven/product_master.csv col country_of_origin	repo-export	yes
+case-study/index.html:374	2 of 50 / 4%	2	SKUs missing pallet weight (UNFI, KeHE)	data/cinderhaven/product_master.csv col pallet_weight_lb	repo-export	yes
+case-study/index.html:445	~$93K	92800	deferred revenue, illustrative (29 SKUs x $800/wk x 4 wk)	inline arithmetic case-study/index.html:450-451 from assumed $800/week/SKU velocity	fixed-input	no
+case-study/index.html:450	$800/week/SKU	800	illustrative velocity per SKU per week	stated assumption	assumption	no
+case-study/index.html:451	$92,800	92800	deferred revenue, 4-week delay on 29 SKUs	29 x 800 x 4, case-study/index.html:450	fixed-input	yes
+case-study/index.html:479	$4,350–$14,500	4350	slotting exposure per retailer, 29 SKUs x $150 (high 29 x $500 = 14,500)	inline arithmetic from assumed $150-$500 per SKU slotting	fixed-input	no
+case-study/index.html:506	$2,250–$3,600	2250	rework labor, 50-80 hrs x $45/hr (high 3,600)	inline arithmetic from assumed $45/hour blended ops cost	fixed-input	no
+case-study/index.html:77	$5.99 MSRP	5.99	CHP-PS-001 Stone Ground Mustard MSRP	data/cinderhaven/product_master.csv row CHP-PS-001 col msrp	repo-export	no
+case-study/index.html:92	10.37 × 9.37 × 7.74 in	10.37	CHP-PS-001 case dimensions L (W 9.37, H 7.74)	data/cinderhaven/product_master.csv row CHP-PS-001 cols case_length_in/case_width_in/case_height_in	repo-export	no
+case-study/index.html:96	19.24 lb	19.244	CHP-PS-001 case weight	data/cinderhaven/product_master.csv row CHP-PS-001 col case_weight_lbs	repo-export	no
